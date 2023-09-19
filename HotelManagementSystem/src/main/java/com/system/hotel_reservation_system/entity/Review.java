@@ -23,10 +23,10 @@ public class Review {
     private Integer pricing;
 
     @Column
-    private Integer cofort;
+    private Integer comfort;
 
     @Column
-    private Integer service;
+    private Integer srvice;
 
     @Column
     private String name;
