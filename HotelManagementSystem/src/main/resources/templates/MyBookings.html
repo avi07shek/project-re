@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Admin-dashboard</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+        rel="stylesheet">
+  <link rel="stylesheet" th:href="@{~/css/mybook.css}">
+<!--  <link rel="shortcut icon" type="x-icon" th:href="@{~/img/logo.png}">-->
+
+</head>
+<body>
+<main>
+  <h1>My Bookings</h1>
+  <div class="recent-orders">
+
+    <table>
+      <thead>
+      <tr>
+        <th>BookingId</th>
+        <th>UserName</th>
+        <th>Room Name</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>People</th>
+        <th>Contact</th>
+        <th>Price</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="mybook:${books}">
+        <td th:text="${mybook.id}"></td>
+        <td th:text="${mybook.userId.fullname}"></td>
+        <td th:text="${mybook.roomId.room_type}"></td>
+        <td th:text="${mybook.checkin}"></td>
+        <td th:text="${mybook.checkout}"></td>
+        <td th:text="${mybook.people}"></td>
+        <td th:text="${mybook.phone}"></td>
+        <td th:text="${mybook.roomId.price}"></td>
+        <td>
+
+          <a th:href="@{~/dashboard/products/}+${mybook.id}"><button class="del-btn">Edit</button></a>
+          <a th:href="@{~/dashboard/deletes/}+${mybook.id}"><button class="del-btn">Delete</button></a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org/" >
+<head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/reg1.css}">
+</head>
+<body>
+    <div class="form-body without-side">
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img th:src="@{/images/graphic3.svg}" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Register new account</h3>
+                            <p>Join US</p>
+                        <form th:method="post" th:action="@{/user/save}" th:object="${user}">
+                            <input class="form-control" type="text" name="name" placeholder="Full Name" required th:field="*{fullname}" th:value="${user.fullname}">
+                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required th:field="*{email}" th:value="${user.email}">
+                            <input class="form-control" type="password" name="password" placeholder="Password" required th:field="*{password}" th:value="${user.password}">
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Register</button>
+                            </div>
+                        </form>
+                       <div class="other-links">
+
+                      </div>
+                        <div class="page-links">
+                             <a th:href="@{~/login}">Already Got an Acc?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

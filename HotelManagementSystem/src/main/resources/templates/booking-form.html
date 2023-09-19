@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<title>Book Here</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap1.min.css}" />
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/bokking.css}" />
+
+
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="form-header">
+							<h1>Make your reservation</h1>
+						</div>
+						<form th:method="post" th:action="@{/dashboard/savebook}" th:object="${booking}">
+						<input  type="text" hidden="hidden" name="userId" th:value="${userlog.id}">
+						<input  type="text" hidden="hidden" name="roomId" th:value="${rooms.id}">
+
+							<!--							<div class="form-group">-->
+<!--								<input class="form-control" type="text" placeholder="FullName" th:field="*{}">-->
+<!--								<span class="form-label">Name</span>-->
+<!--							</div>-->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="date" required th:field="*{checkin}">
+										<span class="form-label">Check In</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="date" required th:field="*{checkout}">
+										<span class="form-label">Check out</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<select class="form-control" required th:field="*{People}">
+											<option value="NOT" selected hidden>no of people</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+										</select>
+										<span class="select-arrow"></span>
+										<span class="form-label">Guests</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="tel" placeholder="Enter you Phone" required th:field="*{phone}">
+										<span class="form-label">Phone</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-btn">
+								<button class="submit-btn" type="submit">Book Now</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{~/js/jquery1.min.js}"></script>
+	<script>
+		$('.form-control').each(function () {
+			floatedLabel($(this));
+		});
+
+		$('.form-control').on('input', function () {
+			floatedLabel($(this));
+		});
+
+		function floatedLabel(input) {
+			var $field = input.closest('.form-group');
+			if (input.val()) {
+				$field.addClass('input-not-empty');
+			} else {
+				$field.removeClass('input-not-empty');
+			}
+		}
+	</script>
+
+</body>
+
+</html>

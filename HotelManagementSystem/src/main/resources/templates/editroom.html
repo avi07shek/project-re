@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org/" >
+
+<head>
+	<!-- PAGE TITLE -->
+	<title> Hotel Admin Dashboard</title>
+	<!-- Style css -->
+	<link th:href="@{~/css/style1.css}" rel="stylesheet">
+	
+</head>
+<body>
+        <div class="content-body">
+            <div class="container-fluid" style="min-height: 329px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <!-- <h4 class="card-title"></h4> -->
+                            </div>
+                            <div class="card-body">
+                                <div class="form-validation">
+                                    <form class="form-valide" th:action="@{~/admin/create}" th:method="post" th:object="${erooms}" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                        <input  hidden type="text" th:field="*{id}" th:value="${edrooms.getId()}">
+                                                <div class="form-group mb-3 row"><label
+                                                    class="col-lg-4 col-form-label"
+                                                    for="val-currency">Rate(Rs)<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="col-lg-6"><input type="text" class="form-control"
+                                                        id="val-currency" name="val-currency"
+                                                        placeholder="RS2160"  th:field="*{price}" th:value="${edrooms.getPrice()}"></div>
+                                            </div>
+                                                <div class="form-group mb-3 row"><label
+                                                        class="col-lg-4 col-form-label"
+                                                        for="val-suggestions">Room Description <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="col-lg-6"><textarea class="form-control"
+                                                            id="val-suggestions" name="val-suggestions" rows="5"
+                                                            placeholder="What would you like to say about rooms?" th:field="*{room_description}" th:value="${edrooms.getRoom_description()}"  ></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-3 row"><label
+                                                    class="col-lg-4 col-form-label"
+                                                    for="val-suggestions">Room Type <span
+                                                        class="text-danger">*</span></label>
+                                                <div class="col-lg-6"><textarea class="form-control"
+                                                        id="val-suggestions" name="val-suggestions" rows="5"
+                                                        placeholder="What would you like to say about rooms?"  th:field="*{room_type}" th:value="${edrooms.getRoom_type()}"  ></textarea>
+                                                </div>
+                                            </div>
+
+
+                                             
+                                            </div>
+                                            <div class="col-xl-6">
+                                                
+                                               
+        
+                                                <div class="form-group mb-3 row"><label
+                                                        class="col-lg-4 col-form-label" for="val-number">No of people
+                                                        <span class="text-danger">*</span></label>
+                                                    <div class="col-lg-6"><input type="text" class="form-control"
+                                                            id="val-number" name="val-number" placeholder="xx" th:field="*{no_of_people}" th:value="${edrooms.getNo_of_people()}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row"><label
+                                                        class="col-lg-4 col-form-label" for="val-number">Beds
+                                                    <span class="text-danger">*</span></label>
+                                                    <div class="col-lg-6"><input type="text" class="form-control"
+                                                                                 id="val-number" name="val-number" placeholder="xx"  th:field="*{beds}" th:value="${edrooms.getBeds()}"  >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label for="image-upload" class="col-lg-4 col-form-label">Select images:</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="file" id="image-upload-1" th:field="*{image1}"  th:value="${edrooms.getImage1()}" multiple accept="image/*" alt=media>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label for="image-upload-2" class="col-lg-4 col-form-label">Select images:</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="file" id="image-upload-1" th:field="*{image2}" th:value="${edrooms.getImage2()}" multiple accept="image/*" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label for="image-upload-3" class="col-lg-4 col-form-label">Select images:</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="file" id="image-upload-1" th:field="*{image3}" th:value="${edrooms.getImage3()}" multiple accept="image/*"  >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label for="image-upload-4" class="col-lg-4 col-form-label">Select images:</label>
+                                                    <div class="col-lg-6">
+
+
+                                                        <input type="file" id="image-upload-1" th:field="*{image4}" th:value="${edrooms.getImage4()}" multiple accept="image/*"  >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label for="image-upload-5" class="col-lg-4 col-form-label">Select images:</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="file" id="image-upload-1" th:field="*{image5}" th:value="${edrooms.getImage5()}" multiple accept="image/*"  >
+                                                    </div>
+                                                </div>
+                                                     </div>
+                                                </div>
+                                                <div class="form-group mb-6 row">
+                                                    <div class="col-lg-7 ms-auto">
+                                                        <a th:href="@{~/admin/editrooms}+${edrooms.id}"> <button type="submit" class="btn btn-primary">Edit</button> </a>
+                                                    </div>
+                                                </div>
+                                    </form>
+                                </div>
+                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</body>
+</html>
