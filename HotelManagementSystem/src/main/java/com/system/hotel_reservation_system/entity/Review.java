@@ -23,7 +23,7 @@ public class Review {
     private Integer pricing;
 
     @Column
-    private Integer comfort;
+    private Integer cofort;
 
     @Column
     private Integer service;
